@@ -2,7 +2,7 @@ Necessário adquirir uma chave em : https://docs.thedogapi.com/
 
 Após a aquisição da chave crie um arquivo chamado .env com a seguinte estrutura:
 
-API_KEY= SUA CHAVE DA APO
+API_KEY= SUA CHAVE DA API
 
 ou passe a chave direto na url:
 

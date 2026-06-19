@@ -10,7 +10,7 @@ st.set_page_config(layout="wide",
 
 st.title('Bem vindo a DogInfo 🐶',text_alignment='center')
 
-api = ApiCliente(f'https://api.thedogapi.com/v1/breeds/')
+api = ApiCliente(f'https://api.thedogapi.com/v1/breeds')
 dogs = api.get_dogs()
 
 with st.container(horizontal_alignment="center"):
@@ -36,7 +36,10 @@ for doguinho in dogs:
         with st.container(height=1000,border=True):
             st.title(f"{traducao(doguinho['name'])}",text_alignment='center')
             with st.container(width=400):
-                st.image(doguinho['image']['url'],caption=doguinho['name'], link=doguinho['image']['url'])
+                if doguinho['reference_image_id'] == None:
+                    st.image('..\img\sem_imagem.jpg',caption='Sem imagem',)
+                else:
+                    st.image(doguinho['reference_image_id'],caption=doguinho['name'])
             st.write(f"{traducao('Origem:')} {traducao(doguinho['origin'])}")
             st.write(f"{traducao('Temperamento:')} {traducao(doguinho['temperament'])}.")
             st.write(f"{traducao('Descrição:')} {traducao(doguinho['description'])}")
